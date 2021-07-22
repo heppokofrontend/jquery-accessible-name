@@ -1,10 +1,10 @@
 {
-  "name": "jquery.accessible-name",
+  "name": "jquery-accessible-name",
   "description": "",
   "version": "1.0.0",
   "author": "heppokofrontend <heppokofrontend@gmail.com> (https://github.com/heppokofrontend)",
   "bugs": {
-    "url": "https://github.com/heppokofrontend/jquery.accessible-name/issues"
+    "url": "https://github.com/heppokofrontend/jquery-accessible-name/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
@@ -33,20 +33,20 @@
     "dist",
     "lib"
   ],
-  "homepage": "https://github.com/heppokofrontend/jquery.accessible-name#readme",
+  "homepage": "https://github.com/heppokofrontend/jquery-accessible-name#readme",
   "keywords": [
     "accessibility",
     "accessible",
     "jquery-plugin"
   ],
   "license": "MIT",
-  "main": "dist/jquery.accessible-name.js",
+  "main": "dist/jquery.accessibleName.js",
   "peerDependencies": {
     "jquery": "^3.6.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heppokofrontend/jquery.accessible-name.git"
+    "url": "git+https://github.com/heppokofrontend/jquery-accessible-name.git"
   },
   "scripts": {
     "build": "npm run build:ts && npm run build:webpack && node merge.license",

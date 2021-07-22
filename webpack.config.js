@@ -32,7 +32,7 @@ const config = {
   legacy: {
     output: {
       path: path.resolve(__dirname, 'lib'),
-      filename: 'jquery.accessible-name.min.js',
+      filename: 'jquery.accessibleName.min.js',
     },
     module: {
       rules: [
@@ -49,7 +49,7 @@ const config = {
   modern: {
     output: {
       path: path.resolve(__dirname, 'lib'),
-      filename: 'jquery.accessible-name.corejs.min.js',
+      filename: 'jquery.accessibleName.corejs.min.js',
     },
     module: {
       rules: [
