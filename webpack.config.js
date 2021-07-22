@@ -14,7 +14,7 @@ return `
 const isProduction = process.env.NODE_ENV == 'production';
 
 
-const config = {
+const baseConfig = {
   entry: './src/index.ts',
   plugins: [
     new webpack.BannerPlugin({
@@ -28,17 +28,17 @@ const config = {
   },
 };
 
-module.exports = () => {
+const config = () => {
   if (isProduction) {
-    config.mode = 'production';
+    baseConfig.mode = 'production';
 
 
   } else {
-    config.mode = 'development';
+    baseConfig.mode = 'development';
   }
   return [
     {
-      ...config,
+      ...baseConfig,
       output: {
         path: path.resolve(__dirname, 'lib'),
         filename: 'jquery.accessible-name.min.js',
@@ -56,7 +56,7 @@ module.exports = () => {
       },
     },
     {
-      ...config,
+      ...baseConfig,
       output: {
         path: path.resolve(__dirname, 'lib'),
         filename: 'jquery.accessible-name.corejs.min.js',
@@ -87,3 +87,5 @@ module.exports = () => {
     },
   ];
 };
+
+module.exports = config;
