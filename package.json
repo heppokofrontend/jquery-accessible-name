@@ -1,7 +1,7 @@
 {
-  "name": "jquery-accessible-name",
+  "name": "@heppokofrontend/jquery-accessible-name",
   "description": "",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "heppokofrontend <heppokofrontend@gmail.com> (https://github.com/heppokofrontend)",
   "bugs": {
     "url": "https://github.com/heppokofrontend/jquery-accessible-name/issues"
