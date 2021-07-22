@@ -1,4 +1,4 @@
-interface JQueryStatic {
+interface JQuery {
   a11yName(): string;
 }
 
