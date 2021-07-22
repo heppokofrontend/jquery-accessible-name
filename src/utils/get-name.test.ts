@@ -1,16 +1,16 @@
-import $ from 'jquery';
+import { getName } from './get-name';
 
-window.jQuery = $;
-
-import('./index');
-
-describe('jQuery: Simply accessible name', () => {
+describe('Native: Simply accessible name', () => {
   test('The No accessible names', () => {
     document.body.innerHTML = `
       <input>
     `;
 
-    expect($('input').a11yName()).toBe('');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('');
+    }
 
     document.body.innerHTML = `
       <label>
@@ -18,14 +18,22 @@ describe('jQuery: Simply accessible name', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('');
+    }
 
     document.body.innerHTML = `
       <div id="label"></div>
       <input aria-labelledby="label">
     `;
 
-    expect($('input').a11yName()).toBe('');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('');
+    }
   });
 
 
@@ -35,7 +43,11 @@ describe('jQuery: Simply accessible name', () => {
       <input aria-labelledby="label">
     `;
 
-    expect($('input').a11yName()).toBe('1');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('1');
+    }
 
     document.body.innerHTML = `
       <div id="label1">1</div>
@@ -43,7 +55,11 @@ describe('jQuery: Simply accessible name', () => {
       <input aria-labelledby="label1 label2">
     `;
 
-    expect($('input').a11yName()).toBe('1 2');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('1 2');
+    }
   });
 
 
@@ -52,7 +68,11 @@ describe('jQuery: Simply accessible name', () => {
       <input aria-label="label">
     `;
 
-    expect($('input').a11yName()).toBe('label');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('label');
+    }
   });
 
 
@@ -64,14 +84,22 @@ describe('jQuery: Simply accessible name', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('label');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('label');
+    }
 
     document.body.innerHTML = `
       <label for="input">label</label>
       <input id="input">
     `;
 
-    expect($('input').a11yName()).toBe('label');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('label');
+    }
 
     document.body.innerHTML = `
       <label for="input">1</label>
@@ -82,7 +110,11 @@ describe('jQuery: Simply accessible name', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('1 2');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('1 2');
+    }
   });
 
 
@@ -91,11 +123,15 @@ describe('jQuery: Simply accessible name', () => {
       <input title="label">
     `;
 
-    expect($('input').a11yName()).toBe('label');
+    {
+      const input = document.querySelector('input')!;
+
+      expect(getName(input)).toBe('label');
+    }
   });
 });
 
-describe('jQuery: Accessible name priority', () => {
+describe('Native: Accessible name priority', () => {
   test('The aria-labelledby attribute', () => {
     document.body.innerHTML = `
       <div id="div">aria-labelledby</div>
@@ -114,7 +150,9 @@ describe('jQuery: Accessible name priority', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('aria-labelledby');
+    const input = document.querySelector('input')!;
+
+    expect(getName(input)).toBe('aria-labelledby');
   });
 
 
@@ -133,7 +171,9 @@ describe('jQuery: Accessible name priority', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('aria-label');
+    const input = document.querySelector('input')!;
+
+    expect(getName(input)).toBe('aria-label');
   });
 
 
@@ -151,7 +191,9 @@ describe('jQuery: Accessible name priority', () => {
       </label>
     `;
 
-    expect($('input').a11yName()).toBe('htmlFor label');
+    const input = document.querySelector('input')!;
+
+    expect(getName(input)).toBe('htmlFor label');
   });
 
 
@@ -162,6 +204,8 @@ describe('jQuery: Accessible name priority', () => {
       >
     `;
 
-    expect($('input').a11yName()).toBe('title');
+    const input = document.querySelector('input')!;
+
+    expect(getName(input)).toBe('title');
   });
 });
