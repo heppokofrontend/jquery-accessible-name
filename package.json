@@ -49,10 +49,10 @@
     "url": "git+https://github.com/heppokofrontend/jquery-accessible-name.git"
   },
   "scripts": {
-    "build": "npm run build:ts && npm run build:webpack && node merge.license",
+    "build": "yarn build:ts && yarn build:webpack && node merge.license",
     "build:ts": "tsc",
     "build:webpack": "webpack --mode=production",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "prestart": "git config commit.template .gitmessage",
     "start": "tsc -w",
     "test": "jest --verbose --coverage",
