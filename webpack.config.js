@@ -28,7 +28,56 @@ const baseConfig = {
   },
 };
 
-const config = () => {
+const config = {
+  legacy: {
+    output: {
+      path: path.resolve(__dirname, 'lib'),
+      filename: 'jquery.accessible-name.min.js',
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'ts-loader',
+          },
+        },
+      ],
+    },
+  },
+  modern: {
+    output: {
+      path: path.resolve(__dirname, 'lib'),
+      filename: 'jquery.accessible-name.corejs.min.js',
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    corejs: 3,
+                    useBuiltIns: "usage",
+                  },
+                ],
+                '@babel/preset-typescript',
+              ],
+            },
+          },
+        },
+      ],
+    },
+  },
+};
+
+module.exports = () => {
   if (isProduction) {
     baseConfig.mode = 'production';
 
@@ -36,56 +85,15 @@ const config = () => {
   } else {
     baseConfig.mode = 'development';
   }
+
   return [
     {
       ...baseConfig,
-      output: {
-        path: path.resolve(__dirname, 'lib'),
-        filename: 'jquery.accessible-name.min.js',
-      },
-      module: {
-        rules: [
-          {
-            test: /\.ts$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'ts-loader',
-            },
-          },
-        ],
-      },
+      ...config.legacy,
     },
     {
       ...baseConfig,
-      output: {
-        path: path.resolve(__dirname, 'lib'),
-        filename: 'jquery.accessible-name.corejs.min.js',
-      },
-      module: {
-        rules: [
-          {
-            test: /\.ts$/,
-            exclude: /node_modules/,
-            use: {
-              loader: 'babel-loader',
-              options: {
-                presets: [
-                  [
-                    '@babel/preset-env',
-                    {
-                      corejs: 3,
-                      useBuiltIns: "usage",
-                    },
-                  ],
-                  '@babel/preset-typescript',
-                ],
-              },
-            },
-          },
-        ],
-      },
+      ...config.modern,
     },
   ];
 };
-
-module.exports = config;
