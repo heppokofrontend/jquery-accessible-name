@@ -48,7 +48,7 @@
     "prepublishOnly": "npm run build",
     "prestart": "git config commit.template .gitmessage",
     "start": "tsc -w",
-    "test": "jest --coverage",
+    "test": "jest --verbose --coverage",
     "test:watch": "jest --watch --coverage"
   }
 }
