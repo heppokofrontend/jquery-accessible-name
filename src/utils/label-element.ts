@@ -4,11 +4,15 @@
  * @return - アクセシブルネーム
  */
 export const getLabelFromLabelElement = (self: HTMLElement | FormAssociated) => {
-  if (!('labels' in self)) {
-    return '';
+  const labels = (self as FormAssociated).labels;
+
+  if (
+    !labels ||
+    !labels.length
+  ) {
+    return null;
   }
 
-  const labels = self.labels || [];
   const result = Array.prototype.map.call(labels, (label: HTMLLabelElement) => {
     return (label.textContent || '').trim();
   });

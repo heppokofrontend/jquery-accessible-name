@@ -9,7 +9,7 @@ describe('getLabelFromAriaLabelledBy', () => {
 
     const input = document.querySelector('input')!;
 
-    expect(getLabelFromAriaLabelledBy(input)).toBe('');
+    expect(getLabelFromAriaLabelledBy(input)).toBeNull();
   });
 
   test('No attribute', () => {
@@ -19,7 +19,7 @@ describe('getLabelFromAriaLabelledBy', () => {
 
     const input = document.querySelector('input')!;
 
-    expect(getLabelFromAriaLabelledBy(input)).toBe('');
+    expect(getLabelFromAriaLabelledBy(input)).toBeNull();
 
     document.body.innerHTML = `
       <div></div>
@@ -27,7 +27,7 @@ describe('getLabelFromAriaLabelledBy', () => {
 
     const div = document.querySelector('div')!;
 
-    expect(getLabelFromAriaLabelledBy(div)).toBe('');
+    expect(getLabelFromAriaLabelledBy(div)).toBeNull();
   });
 
   test('Empty label', () => {

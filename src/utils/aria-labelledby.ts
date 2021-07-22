@@ -4,7 +4,13 @@
  * @return - アクセシブルネーム
  */
 export const getLabelFromAriaLabelledBy = (self: HTMLElement | FormAssociated) => {
-  const idList = (self.getAttribute('aria-labelledby') || '').split(/\s/);
+  const ariaLabelledBy = self.getAttribute('aria-labelledby');
+
+  if (!ariaLabelledBy) {
+    return null;
+  }
+
+  const idList = ariaLabelledBy.split(/\s/);
   const result = [];
 
   for (const id of idList) {

@@ -10,7 +10,7 @@ describe('getLabelFromLabelElement', () => {
 
     const input = document.querySelector('input')!;
 
-    expect(getLabelFromLabelElement(input)).toBe('');
+    expect(getLabelFromLabelElement(input)).toBeNull();
   });
 
   test('No form associated element', () => {
@@ -20,7 +20,7 @@ describe('getLabelFromLabelElement', () => {
 
     const div = document.querySelector('div')!;
 
-    expect(getLabelFromLabelElement(div)).toBe('');
+    expect(getLabelFromLabelElement(div)).toBeNull();
   });
 
   test('The type of hidden', () => {
@@ -29,7 +29,7 @@ describe('getLabelFromLabelElement', () => {
     input.type = 'hidden';
 
     expect(input.labels).toBeNull();
-    expect(getLabelFromLabelElement(input)).toBe('');
+    expect(getLabelFromLabelElement(input)).toBeNull();
   });
 
   test('Empty label', () => {
