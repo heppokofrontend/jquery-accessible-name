@@ -11,30 +11,29 @@ on:
     paths:
       - '!*.md'
 jobs:
-  test:
-    strategy:
-      matrix:
-        # platform: [ windows-latest, macOS-latest ]
-        platform: [ ubuntu-latest ]
-        node: [ '14' ]
+  strategy:
+    matrix:
+      # platform: [ windows-latest, macOS-latest ]
+      platform: [ ubuntu-latest ]
+      node: [ '14' ]
 
-    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
-    runs-on: ${{ matrix.platform }}
-    steps:
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+  name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+  runs-on: ${{ matrix.platform }}
+  steps:
+  - uses: actions/setup-node@v2
+    with:
+      node-version: '14'
 
-    - name: Setup yarn
-      run: npm i -g yarn
+  - name: Setup yarn
+    run: npm i -g yarn
 
-    - name: Run test
-      run: yarn test
+  - name: Run test
+    run: yarn test --frozen-lockfile
 
-    - name: Send Codeclimate
-      uses: paambaati/codeclimate-action@v2.7.5
-      env:
-        CC_TEST_REPORTER_ID: 93cc89b9bb8872c6c1f2fcd688e875bf880897377c9da266784bd14e03bf3601
-      with:
-        coverageLocations: |
-          ${{github.workspace}}/coverage/lcov.info:lcov
+  - name: Send Codeclimate
+    uses: paambaati/codeclimate-action@v2.7.5
+    env:
+      CC_TEST_REPORTER_ID: 93cc89b9bb8872c6c1f2fcd688e875bf880897377c9da266784bd14e03bf3601
+    with:
+      coverageLocations: |
+        ${{github.workspace}}/coverage/lcov.info:lcov
