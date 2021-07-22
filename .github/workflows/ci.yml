@@ -39,7 +39,7 @@ jobs:
       - name: Send Codeclimate
         uses: paambaati/codeclimate-action@v2.7.5
         env:
-          CC_TEST_REPORTER_ID: 93cc89b9bb8872c6c1f2fcd688e875bf880897377c9da266784bd14e03bf3601
+          CC_TEST_REPORTER_ID: e500590eb29932f8637137ce0b8fb55221279fcd969f4b4007b34b94a4bd3dba
         with:
           coverageLocations: |
             ${{github.workspace}}/coverage/lcov.info:lcov
