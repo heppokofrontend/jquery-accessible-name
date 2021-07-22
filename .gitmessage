@@ -10,6 +10,7 @@
 # 🗑  :wastebasket: Committing to repeal, delete, etc.（削除）
 # ⚠️  :warning: Important commits for quality and stable（重要なコミット）
 # ⚡️  :zap: Other changes（その他の更新）
+# ⚙  :gear: Only build（ビルドコマンド実行結果）
 
 # ==== Commit comment example ====
 # :zap: Subject text
