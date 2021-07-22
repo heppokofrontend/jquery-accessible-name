@@ -16,10 +16,6 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const config = {
   entry: './src/index.ts',
-  output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: 'jquery.accessible-name.min.js',
-  },
   plugins: [
     new webpack.BannerPlugin({
       banner,
@@ -27,30 +23,6 @@ const config = {
       entryOnly: true,
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/i,
-        loader: 'ts-loader',
-        exclude: ['/node_modules/'],
-      },
-      {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: 'asset',
-      },
-
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ],
-  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
@@ -64,5 +36,54 @@ module.exports = () => {
   } else {
     config.mode = 'development';
   }
-  return config;
+  return [
+    {
+      ...config,
+      output: {
+        path: path.resolve(__dirname, 'lib'),
+        filename: 'jquery.accessible-name.min.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.ts$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'ts-loader',
+            },
+          },
+        ],
+      },
+    },
+    {
+      ...config,
+      output: {
+        path: path.resolve(__dirname, 'lib'),
+        filename: 'jquery.accessible-name.corejs.min.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.ts$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      corejs: 3,
+                      useBuiltIns: "usage",
+                    },
+                  ],
+                  '@babel/preset-typescript',
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ];
 };
