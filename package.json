@@ -14,7 +14,8 @@
     "ts-jest": "^27.0.4",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.1.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^5.46.0"
   },
   "engines": {
     "npm": "Please use yarn"
@@ -46,6 +47,6 @@
     "prestart": "git config commit.template .gitmessage",
     "start": "tsc -w",
     "test": "jest --coverage",
-    "test:watch": "jest --watch --caverage"
+    "test:watch": "jest --watch --coverage"
   }
 }

@@ -10,10 +10,14 @@
     "outDir": "dist",
     "types": [
       "jest",
-      "node"
+      "node",
+      "jquery"
     ]
   },
   "include": [
     "./src/**/*.ts"
+  ],
+  "exclude": [
+    "./src/**/*.test.ts"
   ]
 }
