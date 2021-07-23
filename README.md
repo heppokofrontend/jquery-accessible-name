@@ -41,3 +41,7 @@ $(function() {
   const a11yName = $('input').a11yName(); // > Your name
 });
 ```
+
+## 元ネタ
+
+<https://qiita.com/heppokofrontend/items/7e5d6d69893828cbf17e>
