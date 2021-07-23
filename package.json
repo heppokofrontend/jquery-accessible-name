@@ -1,6 +1,6 @@
 {
   "name": "@heppokofrontend/jquery-accessible-name",
-  "description": "",
+  "description": "A jQuery plugin to get the accessible name of elements.",
   "version": "0.1.2",
   "author": "heppokofrontend <heppokofrontend@gmail.com> (https://github.com/heppokofrontend)",
   "bugs": {
